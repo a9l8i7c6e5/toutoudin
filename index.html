@@ -1,0 +1,46 @@
+index.html
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>偷訂車隊系統</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: #2c3e50; }
+    .box { border:1px solid #ccc; padding:15px; margin:10px 0; border-radius:8px; }
+    button { padding:8px 16px; margin-top:10px; }
+  </style>
+</head>
+<body>
+  <h1>偷訂車隊系統 (Demo)</h1>
+  <div class="box">
+    <h2>登入區</h2>
+    <p>角色：<select id="role">
+      <option value="admin">Admin</option>
+      <option value="operator">Operator</option>
+      <option value="driver">Driver</option>
+    </select></p>
+    <p>密碼：<input type="password" id="pwd"></p>
+    <button onclick="login()">登入</button>
+  </div>
+  <div class="box" id="output"></div>
+
+  <script>
+    function login(){
+      const role = document.getElementById("role").value;
+      const pwd = document.getElementById("pwd").value;
+      let msg = "";
+      if(role==="admin" && pwd==="steading-admin"){
+        msg = "✅ 後台登入成功";
+      } else if(role==="operator" && pwd==="steading-op"){
+        msg = "✅ 發單端登入成功";
+      } else if(role==="driver" && pwd==="1234"){
+        msg = "✅ 司機登入成功";
+      } else {
+        msg = "❌ 密碼錯誤";
+      }
+      document.getElementById("output").innerHTML = msg;
+    }
+  </script>
+</body>
+</html>
